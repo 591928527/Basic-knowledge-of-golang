@@ -91,3 +91,19 @@
 ### 1.1.11 range   
    通过range可以持续从channel中读出数据，好像在遍历一个数组一样，当channel中没有数据时会阻塞当前goroutine，与读channel时阻塞处理机制一样。  
    注意：如果向此channel写数据的goroutine退出时，系统检测到这种情况后会panic，否则range将会永久阻塞。      
+
+## 2. slice
+  Slice又称动态数组，依托数组实现，可以方便的进行扩容、传递等，实际使用中比数组更灵活。  
+
+### 2.1 Slice实现原理  
+  Slice依托数组实现，底层数组对用户屏蔽，在底层数组容量不足时可以实现自动重分配并生成新的Slice。接下来按照实际使用场景分别介绍其实现机制。
+
+### 2.2 Slice数据结构
+  源码包中src/runtime/slice.go:slice定义了Slice的数据结构：
+    type slice struct {
+     array unsafe.Pointer
+     len   int
+     cap   int
+   }
+
+  从数据结构看Slice很清晰, array指针指向底层数组，len表示切片长度，cap表示底层数组容量。
