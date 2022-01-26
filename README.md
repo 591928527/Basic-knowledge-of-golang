@@ -24,3 +24,21 @@
 
    下图展示了一个可缓存6个元素的channel示意图：
     ![image](chan-01-circle_queue.png)
+
+    dataqsiz指示了队列长度为6，即可缓存6个元素；  
+    buf指向队列的内存，队列中还剩余两个元素；  
+    qcount表示队列中还有两个元素；  
+    sendx指示后续写入的数据存储的位置，取值[0, 6)；  
+    recvx指示从该位置读取数据, 取值[0, 6)；  
+
+### 1.1.3  等待队列
+   从channel读数据，如果channel缓冲区为空或者没有缓冲区，当前goroutine会被阻塞。向channel写数据，如果channel缓冲区已满或者没有缓冲区，当前goroutine会被阻塞。  
+
+   被阻塞的goroutine将会挂在channel的等待队列中：
+     因读阻塞的goroutine会被向channel写入数据的goroutine唤醒；  
+     因写阻塞的goroutine会被从channel读数据的goroutine唤醒；  
+
+   下图展示了一个没有缓冲区的channel，有几个goroutine阻塞等待读数据： 
+   ![image](chan-02-wait_queue.png) 
+
+   注意，一般情况下recvq和sendq至少有一个为空。只有一个例外，那就是同一个goroutine使用select语句向channel一边写数据，一边读数据。
