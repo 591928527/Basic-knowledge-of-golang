@@ -101,9 +101,9 @@
 ### 2.2 Slice数据结构
   源码包中src/runtime/slice.go:slice定义了Slice的数据结构：  
     type slice struct {
-     array unsafe.Pointer
-     len   int
-     cap   int
-   }
+      array unsafe.Pointer
+      len   int
+      cap   int
+    }
 
   从数据结构看Slice很清晰, array指针指向底层数组，len表示切片长度，cap表示底层数组容量。
