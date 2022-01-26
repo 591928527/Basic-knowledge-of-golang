@@ -99,7 +99,7 @@
   Slice依托数组实现，底层数组对用户屏蔽，在底层数组容量不足时可以实现自动重分配并生成新的Slice。接下来按照实际使用场景分别介绍其实现机制。
 
 ### 2.2 Slice数据结构
-  源码包中src/runtime/slice.go:slice定义了Slice的数据结构：
+  源码包中src/runtime/slice.go:slice定义了Slice的数据结构：  
     type slice struct {
      array unsafe.Pointer
      len   int
