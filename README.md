@@ -6,7 +6,7 @@
   src/runtime/chan.go:hchan定义了channel的数据结构：
 
   type hchan struct {  
-    qcount   uint                 // 当前队列中剩余元素个数  
+    qcount   uint               &emsp;&emsp;&emsp;  // 当前队列中剩余元素个数  
     dataqsiz uint                 // 环形队列长度，即可以存放的元素个数  
     buf      unsafe.Pointer       // 环形队列指针  
     elemsize uint16              // 每个元素的大小  
