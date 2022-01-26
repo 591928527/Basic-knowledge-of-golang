@@ -86,8 +86,8 @@
      func writeChan(chanName chan<- int)： 通过形参限定函数内部只能向channel中写入数据
 
 ### 1.1.10 select 
-    使用select可以监控多channel，比如监控多个channel，当其中某一个channel有数据时，就从其读出数据。从channel中读出数据的顺序是随机的，事实上select语句的多个case执行顺序是随机的  
+   使用select可以监控多channel，比如监控多个channel，当其中某一个channel有数据时，就从其读出数据。从channel中读出数据的顺序是随机的，事实上select语句的多个case执行顺序是随机的  
 
 ### 1.1.11 range   
-    通过range可以持续从channel中读出数据，好像在遍历一个数组一样，当channel中没有数据时会阻塞当前goroutine，与读channel时阻塞处理机制一样。  
-    注意：如果向此channel写数据的goroutine退出时，系统检测到这种情况后会panic，否则range将会永久阻塞。      
+   通过range可以持续从channel中读出数据，好像在遍历一个数组一样，当channel中没有数据时会阻塞当前goroutine，与读channel时阻塞处理机制一样。  
+   注意：如果向此channel写数据的goroutine退出时，系统检测到这种情况后会panic，否则range将会永久阻塞。      
