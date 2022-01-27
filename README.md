@@ -1,4 +1,5 @@
 # golang常见的数据结构实现原理
+https://blog.csdn.net/qq_42761527/article/details/104415701
 ## 1. chan
    channel是Golang在语言层面提供的goroutine间的通信方式，比Unix管道更易用也更轻便。channel主要用于进程内各goroutine间通信，如果需要跨进程通信，建议使用分布式系统的方法来解决。
 
